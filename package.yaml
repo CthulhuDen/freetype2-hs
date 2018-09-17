@@ -1,20 +1,42 @@
 name:                freetype2-hs
 version:             0.1.0.0
-#synopsis:
-#description:
+description:         Higher-level bindings to freetype library
 homepage:            https://github.com/CthulhuDen/freetype2-hs#readme
 license:             BSD3
 author:              cthulhu.den
 maintainer:          cthulhu.den@gmail.com
 copyright:           Cthulhu (c) 2018
-category:            Web
+category:            Graphics
 extra-source-files:
 - README.md
 
 dependencies:
-  - base >= 4.7 && < 5
+- base >= 4.7 && < 5
+- freetype2
+- safe-exceptions
+- unordered-containers
+- hashable
+
+ghc-options:
+- -Wall
+- -O2
+
+library:
+  source-dirs:        src
 
 executables:
   freetype2-hs:
-    source-dirs:      src
+    source-dirs:      app
     main:             Main.hs
+    dependencies:
+    - freetype2-hs
+    ghc-options:
+    - -threaded
+    when:
+      condition: flag(library-only)
+      buildable: false
+
+flags:
+  library-only:
+    manual: false
+    default: true

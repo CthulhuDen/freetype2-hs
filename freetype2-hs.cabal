@@ -1,0 +1,59 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.30.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b5f9481763bb4c02760ad0fd8aa8fdf7d822926899f92739c69a7e71c16e70ad
+
+name:           freetype2-hs
+version:        0.1.0.0
+description:    Higher-level bindings to freetype library
+category:       Graphics
+homepage:       https://github.com/CthulhuDen/freetype2-hs#readme
+author:         cthulhu.den
+maintainer:     cthulhu.den@gmail.com
+copyright:      Cthulhu (c) 2018
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+flag library-only
+  manual: False
+  default: True
+
+library
+  exposed-modules:
+      Graphics.Rendering.FreeType
+  other-modules:
+      Paths_freetype2_hs
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -O2
+  build-depends:
+      base >=4.7 && <5
+    , freetype2
+    , hashable
+    , safe-exceptions
+    , unordered-containers
+  default-language: Haskell2010
+
+executable freetype2-hs
+  main-is: Main.hs
+  other-modules:
+      Paths_freetype2_hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -O2 -threaded
+  build-depends:
+      base >=4.7 && <5
+    , freetype2
+    , freetype2-hs
+    , hashable
+    , safe-exceptions
+    , unordered-containers
+  if flag(library-only)
+    buildable: False
+  default-language: Haskell2010
