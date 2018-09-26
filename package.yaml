@@ -1,5 +1,5 @@
 name:                freetype2-hs
-version:             0.1.0.0
+version:             0.1.1.0
 description:         Higher-level bindings to freetype library
 homepage:            https://github.com/CthulhuDen/freetype2-hs#readme
 license:             BSD3
