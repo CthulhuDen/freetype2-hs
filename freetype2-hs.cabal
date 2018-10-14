@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d5daa6be0e33822c10622825e6bee3e1773699d449e38a4201e015a364475540
+-- hash: 821460743625f1b374c04ab3d69bef8ed1673bf157c4640f32912764740c83bc
 
 name:           freetype2-hs
-version:        0.1.1.0
+version:        0.1.2.0
 description:    Higher-level bindings to freetype library
 category:       Graphics
 homepage:       https://github.com/CthulhuDen/freetype2-hs#readme
@@ -34,6 +34,7 @@ library
   ghc-options: -Wall -O2
   build-depends:
       base >=4.7 && <5
+    , derive-storable
     , freetype2
     , hashable
     , safe-exceptions
@@ -49,6 +50,7 @@ executable freetype2-hs
   ghc-options: -Wall -O2 -threaded
   build-depends:
       base >=4.7 && <5
+    , derive-storable
     , freetype2
     , freetype2-hs
     , hashable
