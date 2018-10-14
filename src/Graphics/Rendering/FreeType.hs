@@ -107,14 +107,14 @@ data PixelSizes = WidthHeight !Int !Int | Height !Int | Width !Int
   deriving (Eq, Generic)
 instance Hashable PixelSizes
 
-instance Storable PixelSizes where
-  sizeOf _ = sizeOf (undefined :: PixelSizes')
-  alignment _ = alignment (undefined :: PixelSizes')
-  peek p = (\case
+instance GStorable PixelSizes where
+  gsizeOf _ = sizeOf (undefined :: PixelSizes')
+  galignment _ = alignment (undefined :: PixelSizes')
+  gpeekByteOff p offs = (\case
     PixelSizes w 0 -> Width w
     PixelSizes 0 h -> Height h
-    PixelSizes w h -> WidthHeight w h) <$> peek (castPtr p)
-  poke p = poke (castPtr p) . \case
+    PixelSizes w h -> WidthHeight w h) <$> gpeekByteOff (castPtr p) offs
+  gpokeByteOff p offs = gpokeByteOff (castPtr p) offs . \case
     Width w -> PixelSizes w 0
     Height h -> PixelSizes 0 h
     WidthHeight w h -> PixelSizes w h
