@@ -153,7 +153,7 @@ renderChar ff c = do
 
 -- | Data identifying which character(s) and in which font size to retrieve from font face.
 data TextQuery t = TextQuery
-  { cqSizes :: !PixelSizes
+  { cqSizes :: {-# UNPACK #-} !PixelSizes
   , cqSubj  :: !t
   } deriving (Eq, Generic)
 
